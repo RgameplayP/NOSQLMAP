@@ -62,18 +62,18 @@ def mainMenu():
     mmSelect = True
     while mmSelect:
         os.system('clear')
-        print " _  _     ___  ___  _    __  __           "
-        print "| \| |___/ __|/ _ \| |  |  \/  |__ _ _ __ "
-        print "| .` / _ \__ \ (_) | |__| |\/| / _` | '_ \\"
+        print (" _  _     ___  ___  _    __  __           ")
+        print ("| \| |___/ __|/ _ \| |  |  \/  |__ _ _ __ ")
+        print ("| .` / _ \__ \ (_) | |__| |\/| / _` | '_ \\")
         print("|_|\_\___/___/\__\_\____|_|  |_\__,_| .__/")
         print(" v0.7 codingo@protonmail.com        |_|   ")
-        print "\n"
-        print "1-Set options"
-        print "2-NoSQL DB Access Attacks"
-        print "3-NoSQL Web App attacks"
-        print "4-Scan for Anonymous " + platform + " Access"
-        print "5-Change Platform (Current: " + platform + ")"
-        print "x-Exit"
+        print ("\n")
+        print ("1-Set options")
+        print ("2-NoSQL DB Access Attacks")
+        print ("3-NoSQL Web App attacks")
+        print ("4-Scan for Anonymous " + platform + " Access")
+        print ("5-Change Platform (Current: " + platform + ")")
+        print ("x-Exit")
 
         select = raw_input("Select an option: ")
 
@@ -171,11 +171,11 @@ def platSel():
     global platform
     global dbPort
     select = True
-    print "\n"
+    print ("\n")
 
     while select:
-        print "1-MongoDB"
-        print "2-CouchDB"
+        print ("1-MongoDB")
+        print ("2-CouchDB")
         pSel = raw_input("Select a platform: ")
 
         if pSel == "1":
@@ -236,22 +236,22 @@ def options():
         optSelect = True
 
     while optSelect:
-        print "\n\n"
-        print "Options"
-        print "1-Set target host/IP (Current: " + str(victim) + ")"
-        print "2-Set web app port (Current: " + str(webPort) + ")"
-        print "3-Set App Path (Current: " + str(uri) + ")"
-        print "4-Toggle HTTPS (Current: " + str(https) + ")"
-        print "5-Set " + platform + " Port (Current : " + str(dbPort) + ")"
-        print "6-Set HTTP Request Method (GET/POST) (Current: " + httpMethod + ")"
-        print "7-Set my local " +  platform + "/Shell IP (Current: " + str(myIP) + ")"
-        print "8-Set shell listener port (Current: " + str(myPort) + ")"
-        print "9-Toggle Verbose Mode: (Current: " + str(verb) + ")"
-        print "0-Load options file"
-        print "a-Load options from saved Burp request"
-        print "b-Save options file"
-        print "h-Set headers"
-        print "x-Back to main menu"
+        print ("\n\n")
+        print ("Options")
+        print ("1-Set target host/IP (Current: " + str(victim) + ")")
+        print ("2-Set web app port (Current: " + str(webPort) + ")")
+        print ("3-Set App Path (Current: " + str(uri) + ")")
+        print ("4-Toggle HTTPS (Current: " + str(https) + ")")
+        print ("5-Set " + platform + " Port (Current : " + str(dbPort) + ")")
+        print ("6-Set HTTP Request Method (GET/POST) (Current: " + httpMethod + ")")
+        print ("7-Set my local " +  platform + "/Shell IP (Current: " + str(myIP) + ")")
+        print ("8-Set shell listener port (Current: " + str(myPort) + ")")
+        print ("9-Toggle Verbose Mode: (Current: " + str(verb) + ")")
+        print ("0-Load options file")
+        print ("a-Load options from saved Burp request")
+        print ("b-Save options file")
+        print ("h-Set headers")
+        print ("x-Back to main menu")
 
         select = raw_input("Select an option: ")
 
@@ -277,7 +277,7 @@ def options():
                     for item in octets:
                         try:
                             if int(item) < 0 or int(item) > 255:
-                                print "Bad octet in IP address."
+                                print ("Bad octet in IP address.")
                                 goodDigits = False
 
                         except NoSQLMapException("[!] Must be a DNS name."):
@@ -287,12 +287,12 @@ def options():
 
                 #If everything checks out set the IP and break the loop
                 if goodDigits == True or notDNS == False:
-                    print "\nTarget set to " + victim + "\n"
+                    print ("\nTarget set to " + victim + "\n")
                     optionSet[0] = True
 
         elif select == "2":
             webPort = raw_input("Enter the HTTP port for web apps: ")
-            print "\nHTTP port set to " + webPort + "\n"
+            print ("\nHTTP port set to " + webPort + "\n")
             optionSet[1] = True
 
         elif select == "3":
@@ -300,54 +300,54 @@ def options():
             #Ensuring the URI path always starts with / and accepts null values
             if len(uri) == 0:
                 uri = "Not Set"
-                print "\nURI Not Set." "\n"
+                print ("\nURI Not Set." "\n")
                 optionSet[2] = False
 
             elif uri[0] != "/":
                 uri = "/" + uri
-                print "\nURI Path set to " + uri + "\n"
+                print ("\nURI Path set to " + uri + "\n")
             optionSet[2] = True
 
         elif select == "4":
             if https == "OFF":
-                print "HTTPS enabled."
+                print ("HTTPS enabled.")
                 https = "ON"
                 optionSet[8] = True
 
             elif https == "ON":
-                print "HTTPS disabled."
+                print ("HTTPS disabled.")
                 https = "OFF"
                 optionSet[8] = True
 
 
         elif select == "5":
             dbPort = int(raw_input("Enter target MongoDB port: "))
-            print "\nTarget Mongo Port set to " + str(dbPort) + "\n"
+            print ("\nTarget Mongo Port set to " + str(dbPort) + "\n")
             optionSet[7] = True
 
         elif select == "6":
             httpMethod = True
             while httpMethod == True:
 
-                print "1-Send request as a GET"
-                print "2-Send request as a POST"
+                print ("1-Send request as a GET")
+                print ("2-Send request as a POST")
                 httpMethod = raw_input("Select an option: ")
 
                 if httpMethod == "1":
                     httpMethod = "GET"
-                    print "GET request set"
+                    print ("GET request set")
                     requestHeaders = {}
                     optionSet[3] = True
 
                 elif httpMethod == "2":
-                    print "POST request set"
+                    print ("POST request set")
                     optionSet[3] = True
                     postDataIn = raw_input("Enter POST data in a comma separated list (i.e. param name 1,value1,param name 2,value2)\n")
                     postData = build_post_data(postDataIn)
                     httpMethod = "POST"
 
                 else:
-                    print "Invalid selection"
+                    print ("Invalid selection")
 
         elif select == "7":
             # Unset the setting boolean since we're setting it again.
@@ -364,7 +364,7 @@ def options():
                 octets = myIP.split(".")
                 # If there aren't 4 octets, toss an error.
                 if len(octets) != 4:
-                    print "Invalid IP length."
+                    print ("Invalid IP length.")
 
                 else:
                     goodLen = True
@@ -373,7 +373,7 @@ def options():
                 # If the format of the IP is good, check and make sure the octets are all within acceptable ranges.
                     for item in octets:
                         if int(item) < 0 or int(item) > 255:
-                            print "Bad octet in IP address."
+                            print ("Bad octet in IP address.")
                             goodDigits = False
 
                         # else:
@@ -385,22 +385,22 @@ def options():
 
                 # If everything checks out set the IP and break the loop
                 if goodLen == True and goodDigits == True:
-                    print "\nShell/DB listener set to " + myIP + "\n"
+                    print ("\nShell/DB listener set to " + myIP + "\n")
                     optionSet[4] = True
 
         elif select == "8":
             myPort = raw_input("Enter TCP listener for shells: ")
-            print "Shell TCP listener set to " + myPort + "\n"
+            print ("Shell TCP listener set to " + myPort + "\n")
             optionSet[5] = True
 
         elif select == "9":
             if verb == "OFF":
-                print "Verbose output enabled."
+                print ("Verbose output enabled.")
                 verb = "ON"
                 optionSet[6] = True
 
             elif verb == "ON":
-                print "Verbose output disabled."
+                print ("Verbose output disabled.")
                 verb = "OFF"
                 optionSet[6] = True
 
@@ -412,7 +412,7 @@ def options():
                     for line in fo:
                         csvOpt.append(line.rstrip())
             except IOError as e:
-                print "I/O error({0}): {1}".format(e.errno, e.strerror)
+                print ("I/O error({0}): {1}".format(e.errno, e.strerror))
                 raw_input("error reading file.  Press enter to continue...")
                 return
 
@@ -450,7 +450,7 @@ def options():
                     for line in fo:
                         reqData.append(line.rstrip())
             except IOError as e:
-                print "I/O error({0}): {1}".format(e.errno, e.strerror)
+                print ("I/O error({0}): {1}".format(e.errno, e.strerror))
                 raw_input("error reading file.  Press enter to continue...")
                 return
 
@@ -475,7 +475,7 @@ def options():
                 postData = dict(zip(paramNames,paramValues))
 
             else:
-                print "unsupported method in request header."
+                print ("unsupported method in request header.")
 
             # load the HTTP headers
             for line in reqData[1:]:
@@ -498,9 +498,9 @@ def options():
                     if httpMethod == "POST":
                         fo.write(",\n"+ str(postData))
                     fo.write(",\n" + str(requestHeaders) )
-                    print "Options file saved!"
+                    print ("Options file saved!")
             except IOError:
-                print "Couldn't save options file."
+                print ("Couldn't save options file.")
 
         elif select == "h":
             reqHeadersIn = raw_input("Enter HTTP Request Header data in a comma separated list (i.e. header name 1,value1,header name 2,value2)\n")
@@ -534,8 +534,8 @@ def build_parser():
     return parser
 
 def signal_handler(signal, frame):
-    print "\n"
-    print "CTRL+C detected.  Exiting."
+    print ("\n")
+    print ("CTRL+C detected.  Exiting.")
     sys.exit()
 
 if __name__ == '__main__':
